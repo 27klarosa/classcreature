@@ -9,7 +9,6 @@
     console.info('pong', payload);
   });
 
-
   //might put under use item to sort it
   socket.on('feed', function (feed) {
     console.log("pet has been feed " + foodItem)
