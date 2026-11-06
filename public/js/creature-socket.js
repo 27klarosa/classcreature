@@ -3,16 +3,18 @@
   if (!window.io) {
     return;
   }
-  const socket = window.io('/', { transports: ['websocket'] });
+  socket = window.io('/', { transports: ['websocket'] });
 
+  socket.on('connect', function () {
+    socket.emit('ping', { message: 'hello' });
+  });
   socket.on('pong', function (payload) {
     console.info('pong', payload);
   });
 
-
   //might put under use item to sort it
-  socket.on('feed', function (feed) {
-    console.log("pet has been feed " + foodItem)
+  socket.on('feed', function () {
+    console.log("pet has been feed ")
   })
 
   socket.on('play', function (play) {

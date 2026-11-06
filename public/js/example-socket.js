@@ -3,7 +3,7 @@
   if (!window.io) {
     return;
   }
-  const socket = window.io('/', { transports: ['websocket'] });
+  socket = window.io('/', { transports: ['websocket'] });
   socket.on('connect', function () {
     socket.emit('ping', { message: 'hello' });
   });
