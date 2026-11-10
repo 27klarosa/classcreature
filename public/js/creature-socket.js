@@ -12,16 +12,33 @@
     console.info('pong', payload);
   });
 
-  //might put under use item to sort it
-  socket.on('feed', function () {
-    console.log("pet has been feed ")
+  //might put under a useItem later, but for now just testing the socket 
+
+  function feed(itemName, itemValue, petId) {
+    socket.emit('feed', {
+      item: itemName,
+      itemValue: itemValue,
+      petId: petId
+    });
+    time_stats.hunger = Math.min(100, time_stats.hunger + itemValue);
+  }
+
+  socket.on('feed', function (payload) {
+    console.log(payload.petId, " has been feed: ", payload.itemName);
+
+
   })
 
-  socket.on('play', function (play) {
+
+
+
+
+
+  socket.on('play', function (payload) {
     console.log("pet has been played with using " + playItem)
   })
 
-  socket.on('play', function (train) {
+  socket.on('train', function (payload) {
     console.log("pet has been trained with using " + playItem + ", gaining " + increasedTrainedStat)
   })
 

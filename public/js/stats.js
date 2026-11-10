@@ -12,7 +12,7 @@ function updateTimeStats() {
     });
     timeStatsContainer.textContent = JSON.stringify(time_stats);
 }
-setInterval(updateTimeStats, 60 * 1000);
+setInterval(updateTimeStats, 2 * 1000);
 
 
 document.getElementById('play').addEventListener('click', () => {
