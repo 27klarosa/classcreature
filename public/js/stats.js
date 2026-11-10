@@ -12,14 +12,14 @@ function updateTimeStats() {
     });
     timeStatsContainer.textContent = JSON.stringify(time_stats);
 }
-setInterval(updateTimeStats, 60 * 1000);
+setInterval(updateTimeStats, 2 * 1000);
 
 
 document.getElementById('play').addEventListener('click', () => {
     // Should restore happiness
 });
 document.getElementById('feed').addEventListener('click', () => {
-    // Should restore hunger
+    time_stats.hunger = Math.min(100, time_stats.hunger + 2);
 });
 document.getElementById('train').addEventListener('click', () => {
     // Should increase train stats
