@@ -5,7 +5,11 @@ const trainStatsContainer = document.getElementById('train_stats_container');
 timeStatsContainer.textContent = JSON.stringify(time_stats);
 trainStatsContainer.textContent = JSON.stringify(train_stats);
 
-// Replace with sockets
+
+
+function updateTrainStats() {}
+
+//make this just reduce stats
 function updateTimeStats() {
     Object.keys(time_stats).forEach((stat) => {
         time_stats[stat] = Math.max(0, time_stats[stat] - 1);
@@ -14,12 +18,18 @@ function updateTimeStats() {
 }
 setInterval(updateTimeStats, 2 * 1000);
 
+//make this update stats in real time
+function updateStats() {
+
+}
+
+
 
 document.getElementById('play').addEventListener('click', () => {
     // Should restore happiness
 });
 document.getElementById('feed').addEventListener('click', () => {
-    time_stats.hunger = Math.min(100, time_stats.hunger + 2);
+    
 });
 document.getElementById('train').addEventListener('click', () => {
     // Should increase train stats
