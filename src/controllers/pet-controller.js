@@ -22,6 +22,12 @@ export function createPetController(container) {
       res.render('pages/shop', {
         title: 'shop',
         features: container.config.features,
+
+      });
+    },
+    stats(req, res) {
+      res.render('pages/stats', {
+        title: 'Stats'
       });
     },
   };

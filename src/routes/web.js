@@ -9,9 +9,10 @@ export function createWebRouter(container) {
   const petController = createPetController(container);
   router.get('/', controller.home);
   router.get('/example', requireAuthentication(), controller.example);
-  router.get('/inventory', requireAuthentication(), petController.inventory)
-  router.get('/creature', requireAuthentication(), petController.creature)
-  router.get('/egg', requireAuthentication(), petController.egg)
+  router.get('/inventory', petController.inventory)
+  router.get('/creature', petController.creature)
+  router.get('/egg', petController.egg)
   router.get('/shop', petController.shop)
+  router.get('/stats', petController.stats)
   return router;
 }
