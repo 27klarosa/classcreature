@@ -18,9 +18,10 @@ export function createPetController(container) {
         features: container.config.features,
       });
     },
-    stats(req, res) {
-      res.render('pages/stats', {
-        title: 'Stats'
+    shop(req, res) {
+      res.render('pages/shop', {
+        title: 'shop',
+        features: container.config.features,
       });
     },
   };
