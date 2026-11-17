@@ -6,31 +6,36 @@ timeStatsContainer.textContent = JSON.stringify(time_stats);
 trainStatsContainer.textContent = JSON.stringify(train_stats);
 
 
+//mainloop, update in real time
+const intervalId = setInterval(() => {
+    timeStatsContainer.textContent = JSON.stringify(time_stats)
+    trainStatsContainer.textContent = JSON.stringify(train_stats)
+}, 200);
 
-function updateTrainStats() {}
 
-//make this just reduce stats
+//reduce stats
 function updateTimeStats() {
     Object.keys(time_stats).forEach((stat) => {
-        time_stats[stat] = Math.max(0, time_stats[stat] - 1);
+        //only the first four stats should be reduced over time
+        if (['hunger', 'happiness', 'entertainment', 'energy'].includes(stat)) {
+            time_stats[stat] = Math.max(0, time_stats[stat] - 1);
+        }
     });
     timeStatsContainer.textContent = JSON.stringify(time_stats);
-}
-setInterval(updateTimeStats, 2 * 1000);
+} setInterval(updateTimeStats, 2000); // Update every second
 
-//make this update stats in real time
-function updateStats() {
-
-}
-
-
-
+//add stats
 document.getElementById('play').addEventListener('click', () => {
-    // Should restore happiness
+    // Should increase happiness and entertainment stats
+    time_stats.happiness = Math.min(100, time_stats.happiness + 1);
+    time_stats.entertainment = Math.min(100, time_stats.entertainment + 1);
+    timeStatsContainer.textContent = JSON.stringify(time_stats);
 });
+
 document.getElementById('feed').addEventListener('click', () => {
-    
+    //
 });
+
 document.getElementById('train').addEventListener('click', () => {
     // Should increase train stats
 });
