@@ -14,6 +14,8 @@
 
   //might put under a useItem later, but for now just testing the socket 
 
+
+  //feed
   function feed(itemName, itemValue, petId) {
     socket.emit('feed', {
       item: itemName,
@@ -25,21 +27,35 @@
 
   socket.on('feed', function (payload) {
     console.log(payload.petId, " has been feed: ", payload.itemName);
-
-
   })
 
-
-
-
-
+  //play
+  function play(itemName, itemValue, petId) {
+    socket.emit('feed', {
+      item: itemName,
+      itemValue: itemValue,
+      petId: petId
+    });
+    time_stats.hunger = Math.min(100, time_stats.hunger + itemValue);
+  }
 
   socket.on('play', function (payload) {
     console.log("pet has been played with using " + playItem)
   })
+
+  //train
+  function train(itemName, itemValue, petId) {
+    socket.emit('feed', {
+      item: itemName,
+      itemValue: itemValue,
+      petId: petId
+    });
+    //take away normal stats like energy, but add to train stats
+  }
 
   socket.on('train', function (payload) {
     console.log("pet has been trained with using " + playItem + ", gaining " + increasedTrainedStat)
   })
 
 })();
+
